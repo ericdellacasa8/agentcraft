@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NEON VOID — Wave Survival Shooter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Atmospheric overlays -->
+  <div class="crt-scanlines"></div>
+  <div class="vignette"></div>
+  <div id="hit-flash"></div>
+
+  <!-- HUD (shown during gameplay) -->
+  <div id="hud">
+    <div id="hud-left">
+      <div class="hud-panel" id="score-panel">
+        <div class="hud-label">SCORE</div>
+        <div class="hud-value" id="score-display">0</div>
+      </div>
+      <div class="hud-panel" id="wave-panel">
+        <div class="hud-label">WAVE</div>
+        <div class="hud-value" id="wave-display">1</div>
+      </div>
+    </div>
+
+    <div id="hud-center">
+      <div id="combo-display" class="hidden">
+        <span id="combo-text">x2 COMBO!</span>
+      </div>
+    </div>
+
+    <div id="hud-right">
+      <div class="hud-panel" id="health-panel">
+        <div class="hud-label">HULL</div>
+        <div class="health-bar-container">
+          <div class="health-bar-fill" id="health-bar"></div>
+          <span class="health-bar-text" id="health-text">100</span>
+        </div>
+      </div>
+      <div class="hud-panel" id="lives-panel">
+        <div class="hud-label">LIVES</div>
+        <div id="lives-display" class="lives-icons">
+          <span class="life-icon">▲</span>
+          <span class="life-icon">▲</span>
+          <span class="life-icon">▲</span>
+        </div>
+      </div>
+      <div class="hud-panel" id="shield-panel" style="display:none;">
+        <div class="hud-label">SHIELD</div>
+        <div id="shield-indicator">⬡ ACTIVE</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Power-up timer bar (bottom) -->
+  <div id="powerup-bar-container">
+    <div id="powerup-bar-label">RAPID FIRE</div>
+    <div id="powerup-bar-track">
+      <div id="powerup-bar-fill"></div>
+    </div>
+  </div>
+
+  <!-- Boss health bar -->
+  <div id="boss-bar-container">
+    <div id="boss-bar-label">⚠ BOSS ⚠</div>
+    <div id="boss-bar-track">
+      <div id="boss-bar-fill"></div>
+    </div>
+    <div id="boss-bar-text">50 / 50</div>
+  </div>
+
+  <!-- TITLE SCREEN -->
+  <div id="title-screen">
+    <div id="title-inner">
+      <div id="title-logo">
+        <div id="title-neon">NEON</div>
+        <div id="title-void">VOID</div>
+      </div>
+      <div id="title-subtitle">SURVIVE THE VOID</div>
+      <div id="title-highscore">HIGH SCORE: <span id="title-hs-value">0</span></div>
+      <div id="title-prompt">PRESS SPACE OR CLICK TO START</div>
+      <div id="title-controls">
+        <div class="ctrl-row"><span class="ctrl-key">WASD</span> Move</div>
+        <div class="ctrl-row"><span class="ctrl-key">ESC</span> Pause</div>
+        <div class="ctrl-row">Auto-aim fires at nearest enemy</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WAVE ANNOUNCEMENT -->
+  <div id="wave-announcement" class="hidden">
+    <div id="wave-announce-text">WAVE 1</div>
+    <div id="wave-announce-sub"></div>
+  </div>
+
+  <!-- PAUSE SCREEN -->
+  <div id="pause-screen" class="hidden">
+    <div class="overlay-inner">
+      <div class="overlay-title" style="color:#00f5ff;">PAUSED</div>
+      <div class="overlay-sub">PRESS ESC TO RESUME</div>
+    </div>
+  </div>
+
+  <!-- GAME OVER SCREEN -->
+  <div id="gameover-screen" class="hidden">
+    <div class="overlay-inner">
+      <div class="overlay-title" style="color:#ff4444;">GAME OVER</div>
+      <div id="go-new-record" class="hidden">★ NEW HIGH SCORE! ★</div>
+      <div class="overlay-stat">SCORE: <span id="go-score">0</span></div>
+      <div class="overlay-stat">WAVE REACHED: <span id="go-wave">1</span></div>
+      <div class="overlay-stat small">HIGH SCORE: <span id="go-highscore">0</span></div>
+      <button id="play-again-btn" class="glow-btn">PLAY AGAIN</button>
+    </div>
+  </div>
+
+  <!-- Mobile message -->
+  <div id="mobile-msg">
+    <div>⌨</div>
+    <div>NEON VOID requires a keyboard.</div>
+    <div style="font-size:0.8em;opacity:0.6;margin-top:8px;">Please play on desktop.</div>
+  </div>
+
+  <canvas id="gameCanvas"></canvas>
+
+  <script src="game.js"></script>
+</body>
+</html>
